@@ -44,11 +44,11 @@ public class AccuWeatherProvider implements WeatherProvider {
             Response response = client.newCall(request).execute();
             String responseString = response.body().string();
             System.out.println(responseString);
-            JsonNode result = objectMapper.readTree(responseString).get("WeatherText");
-            System.out.println(result.asText());
+            /*JsonNode result = objectMapper.readTree(responseString).at("/LocalObservationDateTime");
+            System.out.println(result.asText());*/
 
-           /* WeatherResponse weatherResponse = objectMapper.readValue(responseString, WeatherResponse.class);
-            System.out.println(weatherResponse);*/
+            WeatherResponse weatherResponse = objectMapper.readValue(responseString, WeatherResponse.class);
+            System.out.println(weatherResponse);
 
             // TODO: Сделать в рамках д/з вывод более приятным для пользователя.
             //  Создать класс WeatherResponse, десериализовать ответ сервера в экземпляр класса
